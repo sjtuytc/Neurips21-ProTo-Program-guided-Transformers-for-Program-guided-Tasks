@@ -1,14 +1,12 @@
 # ProTo: Program-Guided Transformer for Program-Guided Tasks
 
-This repository is the official implementation of [ProTo: Program-Guided Transformer for Program-Guided Tasks](https://arxiv.org/abs/2110.00804). 
+This repository is the official implementation of [ProTo: Program-Guided Transformer for Program-Guided Tasks](https://arxiv.org/abs/2110.00804).
 
 Youtube link: https://www.youtube.com/watch?v=Dd8EHqMfOPI&t=24s
 
 Exemplar program-guided tasks:
 
 ![image-20211103105216886](images/task_description.png)
-
-
 
 ProTo model illustrated:
 
@@ -20,7 +18,9 @@ Programs, consisting of semantic and structural information, play an important r
 
 ## News
 
-**2021.Nov.27**  Code is available at Github. Doc is constructing.
+**2022.April.15** Docs finish construction.
+
+**2021.Nov.27** Code is available at Github. Docs are under constructing.
 
 ## Requirements
 
@@ -30,13 +30,19 @@ To install requirements:
 # create conda environment
 conda create --name proto python=3.7
 conda activate proto
-# install packages
+# install general packages
 pip install -r requirements.txt
 ```
 
 #### GQA
 
-1. Feature abstraction via [bottom up attention](https://github.com/MILVLG/bottom-up-attention.pytorch#Pre-trained-models):
+1. Dataset download from [the official website](https://cs.stanford.edu/people/dorarad/gqa/download.html):
+
+   ```
+   bash scripts/download_gqa.sh
+   ```
+
+1. Feature extraction via [bottom up attention](https://github.com/MILVLG/bottom-up-attention.pytorch#Pre-trained-models). The pre-trained features are from meta modular networks.
 
 ```shell
 # clone repo
@@ -57,9 +63,7 @@ pip install ray
 
 #### Minecraft
 
-The original 
-
->📋  Describe how to set up the environment, e.g. pip/conda/docker commands, download datasets, etc...
+The original data and code are not available due to license issue (the original Minecraft dataset is from the Google company). However, I can provide help if you drop me an email: zelin@link.cuhk.edu.hk.
 
 ## Training
 
@@ -68,54 +72,34 @@ The original
 To train the model(s) in the paper, run this command:
 
 ```train
-python train.py --input-data <path_to_data> --alpha 10 --beta 20
+python run_experiments.py
 ```
 
->📋  Describe how to train the models, with example commands on how to train the models in your paper, including the full training procedure and appropriate hyperparameters.
+Using -h to see the possible options.
 
 #### Minecraft
+
+The original data and training code are not available due to license issue (the original Minecraft dataset is from the Google company). However, I can provide help if you drop me an email: zelin@link.cuhk.edu.hk.
 
 ## Evaluation
 
 To evaluate my model on ImageNet, run:
 
 ```eval
-python eval.py --model-file mymodel.pth --benchmark imagenet
+python run_experiments.py --do_eval
 ```
-
->📋  Describe how to evaluate the trained models on benchmarks reported in the paper, give commands that produce the results (section below).
-
-## Pre-trained Models
-
-You can download pretrained models here:
-
-- [My awesome model](https://drive.google.com/mymodel.pth) trained on ImageNet using parameters x,y,z. 
-
->📋  Give a link to where/how the pretrained models can be downloaded and how they were trained (if applicable).  Alternatively you can have an additional column in your results table with a link to the models.
-
-## Results
-
-Our model achieves the following performance on :
-
-### [Image Classification on ImageNet](https://paperswithcode.com/sota/image-classification-on-imagenet)
-
-| Model name         | Top 1 Accuracy  | Top 5 Accuracy |
-| ------------------ |---------------- | -------------- |
-| My awesome model   |     85%         |      95%       |
-
->📋  Include a table of results from your paper, and link back to the leaderboard for clarity and context. If your main result is a figure, include that figure and link to the command or notebook to reproduce it. 
 
 ## Reference and acknowledgement
 
 Cite our paper:
 
 @misc{zhao2021proto,
-      title={ProTo: Program-Guided Transformer for Program-Guided Tasks}, 
-      author={Zelin Zhao and Karan Samel and Binghong Chen and Le Song},
-      year={2021},
-      eprint={2110.00804},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
+title={ProTo: Program-Guided Transformer for Program-Guided Tasks},
+author={Zelin Zhao and Karan Samel and Binghong Chen and Le Song},
+year={2021},
+eprint={2110.00804},
+archivePrefix={arXiv},
+primaryClass={cs.LG}
 }
 
 ## Contributing
